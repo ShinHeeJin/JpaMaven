@@ -7,6 +7,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ITEM_ID")
     private Long id;
 
     private String name;
