@@ -3,6 +3,7 @@ package jpabook.jpashop.domain;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "MEMBER_PRODUCT")
 public class MemberProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
