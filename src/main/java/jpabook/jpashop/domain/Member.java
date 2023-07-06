@@ -23,6 +23,9 @@ public class Member {
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
 
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts;
+
     public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
