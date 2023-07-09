@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.ormtest;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,8 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.shop;
+
+import jpabook.jpashop.domain.ormtest.Locker;
+import jpabook.jpashop.domain.ormtest.MemberProduct;
+import jpabook.jpashop.domain.ormtest.Team;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,21 +26,5 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
-    @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProducts;
-
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
 
 }

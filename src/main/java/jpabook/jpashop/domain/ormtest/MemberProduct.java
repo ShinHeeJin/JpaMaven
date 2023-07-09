@@ -1,4 +1,6 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.ormtest;
+
+import jpabook.jpashop.domain.shop.Member;
 
 import javax.persistence.*;
 
@@ -10,8 +12,8 @@ public class MemberProduct {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    @JoinColumn(name = "MEMBER_TEST_ID")
+    private MemberTest memberTest;
 
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")

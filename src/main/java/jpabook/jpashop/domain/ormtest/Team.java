@@ -1,4 +1,6 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.ormtest;
+
+import jpabook.jpashop.domain.shop.Member;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,11 +18,7 @@ public class Team {
 
     @OneToMany
     @JoinColumn(name = "TEAM_ID")
-    private List<Member> members = new ArrayList<>();
-
-    public List<Member> getMembers() {
-        return members;
-    }
+    private List<MemberTest> memberTests = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -36,5 +34,13 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<MemberTest> getMemberTests() {
+        return memberTests;
+    }
+
+    public void setMemberTests(List<MemberTest> memberTests) {
+        this.memberTests = memberTests;
     }
 }
