@@ -1,10 +1,12 @@
 package jpabook.jpashop.domain.inheritance;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "BOOK")
+@DiscriminatorValue("B")
 public class Book extends MasterItem {
 
     private String author;
