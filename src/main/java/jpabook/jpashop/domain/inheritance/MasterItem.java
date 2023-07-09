@@ -3,10 +3,10 @@ package jpabook.jpashop.domain.inheritance;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
 @Table(name = "MASTER_ITEM")
-public class MasterItem {
+public abstract class MasterItem {
 
     @Id @GeneratedValue
     private Long id;

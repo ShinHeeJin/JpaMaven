@@ -10,5 +10,6 @@ import javax.persistence.Table;
 public class Album extends MasterItem {
 
     private String artist;
+    private String etc;
 
 }

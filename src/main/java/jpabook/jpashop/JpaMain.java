@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.inheritance.Book;
 import jpabook.jpashop.domain.inheritance.Movie;
 import jpabook.jpashop.domain.shop.Member;
 
@@ -17,19 +18,10 @@ public class JpaMain {
         tx.begin();
         try {
 
-            Member member = new Member();
-
-            member.setName("member");
-            member.setCity("cityA");
-            member.setStreet("street");
-            member.setZipcode("1111");
-            
-            member.setCreateMember("memberA");
-            member.setCreatedAt(LocalDateTime.now());
-            member.setLastModifiedBy("memberB");
-            member.setLastModifiedAt(LocalDateTime.now());
-
-            em.persist(member);
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("heejin");
+            em.persist(book);
             em.flush();
             em.clear();
 
