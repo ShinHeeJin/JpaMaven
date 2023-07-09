@@ -1,10 +1,12 @@
 package jpabook.jpashop.domain.shop;
 
+import jpabook.jpashop.domain.inheritance.BaseEntity;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "DELIVERY")
-public class Delivery {
+public class Delivery extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

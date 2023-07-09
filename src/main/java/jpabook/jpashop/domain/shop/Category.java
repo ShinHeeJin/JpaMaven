@@ -1,12 +1,14 @@
 package jpabook.jpashop.domain.shop;
 
+import jpabook.jpashop.domain.inheritance.BaseEntity;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "CATEGORY")
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
