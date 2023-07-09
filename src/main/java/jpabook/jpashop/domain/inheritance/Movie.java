@@ -1,9 +1,11 @@
 package jpabook.jpashop.domain.inheritance;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Movie extends Item{
+@Table(name = "MOVIE")
+public class Movie extends MasterItem{
 
     private String director;
     private String actor;

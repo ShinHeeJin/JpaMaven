@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Item {
+@Table(name = "MASTER_ITEM")
+public class MasterItem {
 
     @Id @GeneratedValue
     private Long id;

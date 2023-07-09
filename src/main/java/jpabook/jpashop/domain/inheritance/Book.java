@@ -1,9 +1,11 @@
 package jpabook.jpashop.domain.inheritance;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Book extends Item {
+@Table(name = "BOOK")
+public class Book extends MasterItem {
 
     private String author;
     private String isbn;
