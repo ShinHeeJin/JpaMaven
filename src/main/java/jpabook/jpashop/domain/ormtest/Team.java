@@ -1,6 +1,6 @@
 package jpabook.jpashop.domain.ormtest;
 
-import jpabook.jpashop.domain.shop.Member;
+import jpabook.jpashop.domain.inheritance.BaseEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
