@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "MEMBER_PRODUCT")
 public class MemberProduct {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne

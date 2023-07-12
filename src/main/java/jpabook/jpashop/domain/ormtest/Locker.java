@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "LOCKER")
 public class Locker {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
     private String name;
 }

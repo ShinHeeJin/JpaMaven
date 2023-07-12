@@ -2,6 +2,8 @@ package jpabook.jpashop;
 
 import jpabook.jpashop.domain.inheritance.Book;
 import jpabook.jpashop.domain.inheritance.Movie;
+import jpabook.jpashop.domain.ormtest.MemberTest;
+import jpabook.jpashop.domain.ormtest.Team;
 import jpabook.jpashop.domain.shop.Member;
 
 import javax.persistence.EntityManager;
@@ -18,16 +20,29 @@ public class JpaMain {
         tx.begin();
         try {
 
-            Book book = new Book();
-            book.setName("JPA");
-            book.setAuthor("heejin");
-            em.persist(book);
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
+            MemberTest member = new MemberTest();
+            member.setName("memberA");
+            member.setTeam(team);
+            em.persist(member);
+
             em.flush();
             em.clear();
 
+            MemberTest findMember = em.find(MemberTest.class, member.getId());
+
+            System.out.println("findMember.getTeam().getClass() = " + findMember.getTeam().getClass()); // proxy
+
+            findMember.getTeam().getName();
+
+            System.out.println("findMember.getTeam().getClass() = " + findMember.getTeam().getClass()); // proxy
+
             tx.commit();
         } catch (Exception e) {
-            System.out.println("e : " + e.toString());
+            e.printStackTrace();
             tx.rollback();
         } finally {
             em.close();

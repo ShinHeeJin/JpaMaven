@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class OrderItem extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
