@@ -25,7 +25,7 @@ public class MemberTest {
     private String street;
     private String zipcode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
