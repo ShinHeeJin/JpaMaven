@@ -4,6 +4,8 @@ import jpabook.jpashop.domain.inheritance.BaseEntity;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name = "DELIVERY")
 public class Delivery extends BaseEntity {
@@ -18,7 +20,7 @@ public class Delivery extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 
 }

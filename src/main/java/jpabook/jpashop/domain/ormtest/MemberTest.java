@@ -9,6 +9,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name = "MEMBER_TEST")
 public class MemberTest {
@@ -25,11 +28,11 @@ public class MemberTest {
     private String street;
     private String zipcode;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    @OneToOne
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
 
