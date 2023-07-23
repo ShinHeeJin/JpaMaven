@@ -12,6 +12,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -21,30 +22,23 @@ public class JpaMain {
         tx.begin();
         try {
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
-
-            Team team1 = new Team();
-            team1.setName("teamB");
-            em.persist(team1);
-
-            MemberTest member = new MemberTest();
+            Member member = new Member();
             member.setName("memberA");
-            member.setTeam(team);
+            member.getFavoriteFoods().add("바나나");
+            member.getFavoriteFoods().add("딸기");
             em.persist(member);
 
-            MemberTest member2 = new MemberTest();
-            member2.setName("memberB");
-            member2.setTeam(team1);
-            em.persist(member2);
+            Set<String> favoriteFoods = member.getFavoriteFoods();
+            System.out.println("favoriteFoods = " + favoriteFoods);
 
             em.flush();
             em.clear();
 
-            List<MemberTest> results = em.createQuery("select m from MemberTest m", MemberTest.class)
-                    .getResultList(); // N+1 이슈
-            System.out.println("results = " + results);
+            Member member1 = em.find(Member.class, 1L);
+            member1.getFavoriteFoods().remove("딸기");
+            Set<String> favoriteFoods1 = member1.getFavoriteFoods();
+            System.out.println("favoriteFoods1 = " + favoriteFoods1);
+
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
