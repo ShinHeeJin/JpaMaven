@@ -15,9 +15,10 @@ public class JpqlMain {
             member.setAge(31);
             em.persist(member);
 
-            TypedQuery<Member> query1 = em.createQuery("select m from Member m", Member.class);
-            TypedQuery<String> query2 = em.createQuery("select m.username from Member m", String.class);
-            Query query3 = em.createQuery("select m.username, u.age from Member m");
+            TypedQuery<Member> query = em.createQuery("select m from Member m where m.username = :username", Member.class);
+            query.setParameter("username", "memberA");
+            Member singleResult = query.getSingleResult();
+            System.out.println("singleResult = " + singleResult);
 
             tx.commit();
         } catch (Exception e) {
