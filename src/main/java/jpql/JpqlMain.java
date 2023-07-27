@@ -1,4 +1,4 @@
-package jpabook.jpql;
+package jpql;
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,10 +15,12 @@ public class JpqlMain {
             member.setAge(31);
             em.persist(member);
 
-            Member singleResult = em.createQuery("select m from Member m where m.username = :username",Member.class)
-                    .setParameter("username", "memberA")
-                    .getSingleResult();
-            System.out.println("singleResult = " + singleResult.getUsername());
+            List<MemberDTO> resultList = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from " +
+                            "Member m", MemberDTO.class)
+                    .getResultList();
+            MemberDTO memberDTO = resultList.get(0);
+            System.out.println("memberDTO.getUsername() = " + memberDTO.getUsername());
+            System.out.println("memberDTO.getAge() = " + memberDTO.getAge());
 
             tx.commit();
         } catch (Exception e) {
