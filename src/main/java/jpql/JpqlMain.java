@@ -20,7 +20,7 @@ public class JpqlMain {
             member.changeTeam(team);
             em.persist(member);
 
-            String query = "SELECT m FROM Member m LEFT JOIN m.team t on m.username = t.name";
+            String query = "SELECT m FROM Member m LEFT JOIN m.team t on t.name = 'teamA'";
             List<Member> members = em.createQuery(query, Member.class).getResultList();
             for (Member each : members) {
                 System.out.println("each = " + each);
