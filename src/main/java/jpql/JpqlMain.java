@@ -20,7 +20,7 @@ public class JpqlMain {
             member.changeTeam(team);
             em.persist(member);
 
-            String query = "select m from Member m inner join m.team t";
+            String query = "select m from Member m join m.team t";
             List<Member> members = em.createQuery(query, Member.class).getResultList();
             System.out.println("members.size() = " + members.size());
 
