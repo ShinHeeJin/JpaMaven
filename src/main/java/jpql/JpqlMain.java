@@ -46,12 +46,13 @@ public class JpqlMain {
             em.persist(member4);
 
             // FLUSH 자동 호출
-            int resultCnt = em.createQuery("update Member m set m.age = 20")
+            int resultCnt = em.createQuery("update Member m  set m.age = 20")
                     .executeUpdate();
             System.out.println("resultCnt = " + resultCnt);
+            em.clear();
 
-            List resultList = em.createQuery("select m from Member m where m.age = 20").getResultList();
-            System.out.println("resultList = " + resultList);
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println("findMember.getAge() = " + findMember.getAge());
 
             tx.commit();
         } catch (Exception e) {
