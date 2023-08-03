@@ -45,7 +45,7 @@ public class JpqlMain {
             member4.setAge(30);
             em.persist(member4);
 
-            String query = "select t from Team t join fetch t.members";
+            String query = "select distinct t from Team t join fetch t.members";
             List<Team> teams = em.createQuery(query, Team.class).getResultList();
             for (Team team : teams) {
                 System.out.println("team = " + team.getName() + " / " + team.getMembers().size() + "명");
