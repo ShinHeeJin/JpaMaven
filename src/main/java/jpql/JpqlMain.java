@@ -45,10 +45,13 @@ public class JpqlMain {
             member4.setAge(30);
             em.persist(member4);
 
-            String query = "select m from Member m join fetch m.team";
-            List<Member> members = em.createQuery(query, Member.class).getResultList();
-            for (Member each : members) {
-                System.out.println("each = " + each);
+            String query = "select t from Team t join fetch t.members";
+            List<Team> teams = em.createQuery(query, Team.class).getResultList();
+            for (Team team : teams) {
+                System.out.println("team = " + team.getName() + " / " + team.getMembers().size() + "명");
+                for (Member teamMember : team.getMembers()) {
+                    System.out.println("teamMember = " + teamMember);
+                }
             }
 
             tx.commit();
