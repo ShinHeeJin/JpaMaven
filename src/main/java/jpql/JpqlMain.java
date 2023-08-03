@@ -45,14 +45,12 @@ public class JpqlMain {
             member4.setAge(30);
             em.persist(member4);
 
-            em.flush();
-            em.clear();
+            // FLUSH 자동 호출
+            int resultCnt = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
+            System.out.println("resultCnt = " + resultCnt);
 
-            String queryString = "Member.findByUsername";
-            List<Member> resultList = em.createNamedQuery(queryString, Member.class)
-                    .setParameter("username", "memberA")
-                    .getResultList();
-
+            List resultList = em.createQuery("select m from Member m where m.age = 20").getResultList();
             System.out.println("resultList = " + resultList);
 
             tx.commit();
